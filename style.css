@@ -1,0 +1,159 @@
+* {
+    border: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    background: transparent;
+    color: inherit;
+}
+
+:root {
+    --couleur-fond: #041326;
+    --couleur-victoire: #4B7BA6;
+    --couleur-texte: #244673;
+    --bordure-carte: #9AC7D9;
+    --bordure-bouton: #9AC7D9;
+    --fond-bouton: #0D2340;/*#244673*/
+    --fond-bouton-actif: #4B7BA6;
+    --fond-carte: #244673;
+    --taille-carte: 150px;
+    --pda-font: "Aileron";
+    --title-font: "Days One";
+}
+
+body {
+    background: url(./background_image.jpg) center/cover no-repeat;
+    background-color: var(--couleur-fond);
+    color: var(--couleur-texte);
+    display: flex;
+    font-family: var(--pda-font), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    flex-direction: column;
+    height: 100vh;
+    perspective: 2000px;
+    perspective-origin: 65% 35%;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 25px;
+    font-family: var(--title-font);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btn {
+    background-color: var(--fond-bouton);
+    border: 2px solid var(--bordure-bouton);
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 7px 10px;
+    transition: background 1s linear;
+}
+
+.btn:hover {
+    background-color: var(--fond-bouton-actif);
+    transition: background 500ms cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+.top-bar {
+    padding: 15px;
+    text-align: center;
+}
+
+.game-zone {
+    flex-grow: 1;
+}
+
+.win-panel{
+    align-items: center;
+    background-color: var(--couleur-victoire);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.win-title{
+    font-size: 52px;
+    margin-bottom: 20px;
+    font-family: var(--title-font);
+}
+
+.win-subtitle{
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.deck{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 790px;
+    margin: 0 auto;
+}
+
+.card {
+    height: var(--taille-carte);
+    position: relative;
+    transform: rotateY(0);
+    transition: transform 500ms linear;
+    width: var(--taille-carte);
+}
+
+.card > div {
+    background: var(--fond-carte) center/cover no-repeat;
+    border: 2px solid var(--bordure-carte);
+    border-radius: 37.5px;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: z-index 500ms linear;
+    width: 100%;
+}
+
+.card > div:hover {
+    background: var(--couleur-victoire) center/cover no-repeat;
+    border: 2px solid var(--bordure-carte);
+    transition: background 500ms cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+.card > div.image {
+    /* background-image: url('./cartes/carte_1.jpg'); */
+    transform: rotateY(180deg);
+    z-index: 1;
+}
+
+.card > div.back {
+    background-image: url('./cartes/carte_arrière.png');
+    z-index: 2;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.flipped .image {
+    z-index: 2;
+}
+
+.card.flipped .back {
+    z-index: 1;
+}
